@@ -9,7 +9,7 @@ import io.undertow.util.Methods;
 import io.undertow.util.StatusCodes;
 import org.apache.log4j.Logger;
 
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public abstract class BaseJsonHandler implements HttpHandler {
     protected final static Logger logger = Logger.getLogger(BaseJsonHandler.class);
@@ -28,7 +28,7 @@ public abstract class BaseJsonHandler implements HttpHandler {
             try {
                 JsonElement json = handle(exchange);
                 exchange.setStatusCode(StatusCodes.OK);
-                exchange.getResponseSender().send(json.toString(), Charset.forName("UTF-8"));
+                exchange.getResponseSender().send(json.toString(), StandardCharsets.UTF_8);
             } catch (StatusException ex) {
                 exchange.setStatusCode(ex.status);
 
