@@ -47,9 +47,10 @@ public final class ConnectedUsers {
      * @return true, if the message was a chat command; false, otherwise.
      */
     public boolean runChatCommand(User user, String command) throws BaseCahHandler.CahException {
+        if (!command.startsWith("/")) return false;
+
         if (!user.isAdmin()) throw new BaseCahHandler.CahException(Consts.ErrorCode.NOT_ADMIN);
 
-        if (!command.startsWith("/")) return false;
         String[] params = command.substring(1).split("\\s");
 
         Consts.ChatCommand cmd = Consts.ChatCommand.parse(params[0]);
