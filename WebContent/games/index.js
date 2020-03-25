@@ -41,7 +41,7 @@ class Games {
         this.profilePicture = this._drawer.find('.details--profile');
         this.profileNickname = this._drawer.find('.details--nick');
         this.profileEmail = this._drawer.find('.details--email');
-        this.loadUserInfo()
+        this.loadUserInfo();
     }
 
     loadUserInfo() {
