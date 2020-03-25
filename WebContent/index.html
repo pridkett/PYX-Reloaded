@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta charset="UTF-8">
     <meta name="google-site-verification" content="d1mgvYymY1hPvJcf0buZ-4e8RMETSFNRFz6aeD4BueI"/>
     <meta name="description" content="A Cards Against Humanity clone and fork of the original Pretend You're Xyzzy"/>
+
     <title>PYX-Reloaded</title>
     <link rel="icon" href="/css/images/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/css/images/icon-32x32.png">
@@ -27,8 +29,8 @@
                 <span class="mdc-toolbar__title">PYX Reloaded</span>
             </section>
             <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
-                <button class="material-icons mdc-toolbar__icon" id="statusPage">dns</button>
-                <a class="material-icons mdc-toolbar__icon" href="//github.com/devgianlu/PYX-Reloaded/issues"
+<!--                <button class="material-icons mdc-toolbar__icon" id="statusPage">dns</button>-->
+                <a class="material-icons mdc-toolbar__icon" href="//github.com/JakeStanger/PYX-Reloaded/issues"
                    target="_blank" rel="noopener">bug_report</a>
             </section>
         </div>
@@ -41,9 +43,7 @@
                     <h1 class="mdc-card__title mdc-typography--title">PYX login</h1>
                 </section>
                 <section class="mdc-card__supporting-text mdc-layout-grid">
-                    <h3 class="mdc-typography--body1 mdc-typography--adjust-margin">You can login without an account by
-                        putting your nickname ONLY down here. If you want to create a personal account either register
-                        with PYX or a social network.</h3>
+                    <h3 class="mdc-typography--body1 mdc-typography--adjust-margin">Enter a nickname here to get started. Only alphanumeric characters are allowed and it must be between 2-29 characters.</h3>
                     <div class="mdc-layout-grid__inner">
                         <label class="mdc-text-field mdc-layout-grid__cell mdc-layout-grid__cell--span-6"
                                style="margin-top: 0"
@@ -52,13 +52,13 @@
                             <span class="mdc-floating-label">Nickname</span>
                             <div class="mdc-line-ripple"></div>
                         </label>
-                        <label class="mdc-text-field mdc-layout-grid__cell mdc-layout-grid__cell--span-6"
-                               style="margin-top: 0"
-                               data-mdc-auto-init="MDCTextField">
-                            <input type="password" class="mdc-text-field__input">
-                            <span class="mdc-floating-label">Password</span>
-                            <div class="mdc-line-ripple"></div>
-                        </label>
+<!--                        <label class="mdc-text-field mdc-layout-grid__cell mdc-layout-grid__cell&#45;&#45;span-6"-->
+<!--                               style="margin-top: 0"-->
+<!--                               data-mdc-auto-init="MDCTextField">-->
+<!--                            <input type="password" class="mdc-text-field__input">-->
+<!--                            <span class="mdc-floating-label">Password</span>-->
+<!--                            <div class="mdc-line-ripple"></div>-->
+<!--                        </label>-->
                         <label class="mdc-text-field mdc-layout-grid__cell mdc-layout-grid__cell--span-12"
                                style="margin-top: 0"
                                data-mdc-auto-init="MDCTextField">
@@ -120,7 +120,7 @@
                     <h1 class="mdc-card__title mdc-typography--title">About PYX Reloaded</h1>
                 </section>
                 <section class="mdc-card__supporting-text mdc-typography--body1">
-                    PYX Reloaded is a fork of the original game overhauled and revamped by <a
+                    <p>PYX Reloaded is a fork of the original game overhauled and revamped by <a
                         href="https://github.com/mgagemorgan" target="_blank" rel="noopener">@mgagemorgan</a> and
                     <a href="https://github.com/devgianlu" target="_blank" rel="noopener">@devgianlu</a> on GitHub. The
                     goal of
@@ -130,13 +130,14 @@
                         href="https://play.google.com/store/apps/details?id=com.gianlu.pretendyourexyzzy"
                         target="_blank" rel="noopener">Android client</a> that works great and is recommended for anyone
                     on
-                    Android.
+                        Android.</p>
+                    <p>This is a fork maintained by <a href="https://github.com/jakestanger" target="_blank" rel="noopener">@jakestanger</a> which fixes a few problems.</p>
                 </section>
                 <section class="mdc-card__actions">
                     <a class="mdc-button mdc-button--compact mdc-card__action"
                        data-mdc-auto-init="MDCRipple" target="_blank" rel="noopener"
-                       href="https://github.com/devgianlu/PYX-Reloaded/">
-                        We're on GitHub!!
+                       href="https://github.com/JakeStanger/PYX-Reloaded/">
+                        Source Code
                     </a>
                 </section>
             </div>
