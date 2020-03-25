@@ -10,6 +10,54 @@ class UsersManager {
 
         this.refresh = $('#refresh');
         this.refresh.on('click', () => this.loadUsers());
+
+        this._drawer = $('#drawer');
+        this.drawer = new mdc.drawer.MDCTemporaryDrawer(this._drawer[0]);
+        $('.mdc-toolbar__menu-icon').on('click', () => this.drawer.open = true);
+
+        this._theming = $('._themingDialog');
+        this._theming.on('click', () => {
+            showThemingDialog();
+            this.closeDrawer();
+        });
+
+        this._logout = $('._logout');
+        this._logout.on('click', () => {
+            UsersManager.logout();
+            this.closeDrawer();
+        });
+
+        this._adminPanel = $('._adminPanel');
+        this.profilePicture = this._drawer.find('.details--profile');
+        this.profileNickname = this._drawer.find('.details--nick');
+        this.profileEmail = this._drawer.find('.details--email');
+        this.loadUserInfo();
+    }
+
+    loadUserInfo() {
+        Requester.request("gme", {}, (data) => {
+            /**
+             * @param {object} data.a - User account
+             * @param {string} data.n - User nickname
+             * @param {string} data.a.p - Profile picture URL
+             * @param {string} data.a.em - Profile email
+             */
+            Notifier.debug(data);
+
+            this.profileNickname.text(data.n);
+            if (data.a !== undefined) {
+                if (data.a.p !== null) this.profilePicture.attr('src', data.a.p);
+                this.profileEmail.show();
+                this.profileEmail.text(data.a.em);
+                if (data.a.ia) this._adminPanel.show();
+                else this._adminPanel.hide();
+            } else {
+                this.profileEmail.hide();
+                this._adminPanel.hide();
+            }
+        }, (error) => {
+            Notifier.error("Failed loading user info.", error)
+        });
     }
 
     loadUsers() {
@@ -37,6 +85,17 @@ class UsersManager {
             else this.message.hide();
         }, (error) => {
             Notifier.error("Failed loading users!", error);
+        });
+    }
+
+    closeDrawer() {
+        this.drawer.open = false;
+    }
+
+    static logout() {
+        eventsReceiver.close();
+        Requester.always("lo", {}, () => {
+            window.location = "/";
         });
     }
 }
