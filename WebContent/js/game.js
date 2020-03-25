@@ -38,7 +38,7 @@ class GameManager {
         this._hand_list = this._hand.find('.list');
         this.hand = new List(this._hand[0], {
             item: 'cardTemplate',
-            valueNames: ['_text', '_pick', '_draw', '_watermark', {data: ['black', 'cid']}]
+            valueNames: ['_text', '_pick', '_draw', '_watermark', {data: ['black', 'cid', 'last']}]
         });
 
         this.hand_sheet = new BottomSheet(this._hand[0]);
@@ -61,7 +61,7 @@ class GameManager {
         this._tableCards_masonry.masonry(this.masonryOptions);
 
         this.table = new List(this._tableCards[0], {
-            valueNames: ['_text', '_pick', '_draw', '_watermark', {data: ['black', 'cid']}],
+            valueNames: ['_text', '_pick', '_draw', '_watermark', {data: ['black', 'cid', 'last']}],
             item: 'cardTemplate'
         });
 
@@ -172,15 +172,16 @@ class GameManager {
      * @param listener - A click listener
      * @private
      */
-    static _addWhiteCard(list, card, listener = undefined) {
+    static _addWhiteCard(list, card, listener = undefined, isLastArrayChild) {
         if (Array.isArray(card)) {
             for (let i = 0; i < card.length; i++)
-                this._addWhiteCard(list, card[i], listener); // TODO: Group cards
+                this._addWhiteCard(list, card[i], listener, i === card.length-1); // TODO: Group cards
 
             return;
         }
 
-        const elm = $(list.add({"cid": card.cid, "_text": card.T, "_watermark": card.W, "black": false})[0].elm);
+        const elm = $(list.add({"cid": card.cid, "_text": card.T, "_watermark": card.W, "black": false, "last": isLastArrayChild})[0].elm);
+        console.log(elm);
         if (card.W === undefined || card.W.length === 0) elm.find('._watermark').remove();
         elm.find('._pick').parent().remove();
         elm.find('._draw').parent().remove();
@@ -247,9 +248,9 @@ class GameManager {
         if (msg.length === 0) return;
 
         this.sendGameChatMessage(msg, () => {
-            this._chatMessage.next().removeClass("mdc-floating-label--float-above");
+//            this._chatMessage.next().removeClass("mdc-floating-label--float-above");
             this._chatMessage.val("");
-            this._chatMessage.blur();
+//            this._chatMessage.blur();
         });
     }
 
