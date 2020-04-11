@@ -9,8 +9,7 @@
 }
 
 .mdc-card.pyx-card > .mdc-card__supporting-text {
-    max-height: 30vh;
-    min-height: 10vh;
+    height: 85px;
     overflow-y: auto;
     padding: 8px;
     overflow-x: hidden;
@@ -18,7 +17,8 @@
 }
 
 .mdc-card.pyx-card .card-details {
-    min-height: 0;
+    height: 50px;
+    overflow: hidden;
 }
 
 /*noinspection CssUnresolvedCustomProperty*/
@@ -32,8 +32,8 @@
 }
 
 .mdc-card.pyx-card[data-last=true] {
-    margin-bottom: 30px;
-    border-bottom: 1px solid #666;
+    border-bottom: 3px solid #777;
+    border-right: 3px solid #777;
 }
 
 .mdc-card.pyx-card {
