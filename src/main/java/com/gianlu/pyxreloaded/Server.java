@@ -154,7 +154,7 @@ public class Server {
         Undertow server = builder.build();
         PreparingShutdown.setup(server, globalTimer, connectedUsers, socialLogin, loadedCards, serverDatabase);
         server.start();
-        logger.info("Server started!");
+        logger.info(String.format("Server started on %s:%d", host, port));
     }
 
     private static SSLContext getSSLContext(File keyStorePath, String keyStorePassword, File trustStorePath, String trustStorePassword) throws IOException, CertificateException, NoSuchAlgorithmException, KeyStoreException, UnrecoverableKeyException, KeyManagementException {
